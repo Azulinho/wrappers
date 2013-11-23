@@ -1,59 +1,89 @@
 wrappers Cookbook
 =================
-TODO: Enter the cookbook description here.
+Wrappers for community cookbooks and small recipes
 
-e.g.
-This cookbook makes your favorite breakfast sandwhich.
-
-Requirements
-------------
-TODO: List your cookbook requirements. Be sure to include any requirements this cookbook has on platforms, libraries, other cookbooks, packages, operating systems, etc.
-
-e.g.
-#### packages
-- `toaster` - wrappers needs toaster to brown your bagel.
+why?
+Because wrapper community cookbooks is a lot of effort
 
 Attributes
 ----------
-TODO: List you cookbook attributes here.
 
-e.g.
-#### wrappers::default
-<table>
-  <tr>
-    <th>Key</th>
-    <th>Type</th>
-    <th>Description</th>
-    <th>Default</th>
-  </tr>
-  <tr>
-    <td><tt>['wrappers']['bacon']</tt></td>
-    <td>Boolean</td>
-    <td>whether to include bacon</td>
-    <td><tt>true</tt></td>
-  </tr>
-</table>
+An example for the mySql wrapper:
+
+['mysql']['version'] = "5.6.14.0"
+['mysql']['checksum'] = "7ca554bcda5d859e71b97f2ed13ec42b"
+
+['mysql']['installer_file'] = \
+  "mysql-installer-community-#{node['mysql']['version']}.msi"
+
+['mysql']['base_url'] =\
+  "http://dev.mysql.com/get/Downloads/MySQLInstaller/"
+
+['mysql']['url'] = \
+  "#{node['mysql']['base_url']}/#{node['mysql']['installer_file']}"
+
+['mysql']['basedir'] = \
+  "#{ENV['SYSTEMDRIVE']}\\Program Files (x86)\\MySQL\\"
+
+  ['mysql']['installer_cli'] = %Q[
+    c:\\Program\ Files\ (x86)\\mySql\\MySQL\ Installer\\MySQLInstallerConsole.exe
+    --config=mysql-server-5.6-winx64:passwd=root
+    --product=mysql-server-5.6-winx64
+    --catalog=mysql-5.6-winx64
+    --action=install
+    --type=full
+    --nowait ]
+
 
 Usage
 -----
-#### wrappers::default
-TODO: Write usage instructions for each cookbook.
+#### wrappers::install-mysql
 
 e.g.
-Just include `wrappers` in your node's `run_list`:
+Just include `wrappers::install-mysql` in your node's `run_list`:
 
 ```json
 {
   "name":"my_node",
   "run_list": [
-    "recipe[wrappers]"
+    "recipe[wrappers:::install-mysql]"
   ]
 }
 ```
 
+
+#### wrappers::install--IIS-roles-
+
+e.g.
+Just include `wrappers::install-IIS-roles` in your node's `run_list`:
+
+```json
+{
+  "name":"my_node",
+  "run_list": [
+    "recipe[wrappers:::install-IIS-roles]"
+  ]
+}
+```
+
+
+#### wrappers::ms_dotnet45
+
+e.g.
+Just include `wrappers::ms_dotnet45` in your node's `run_list`:
+
+```json
+{
+  "name":"my_node",
+  "run_list": [
+    "recipe[wrappers:::ms_dotnet45]"
+  ]
+}
+```
+
+
 Contributing
 ------------
-TODO: (optional) If this is a public cookbook, detail the process for contributing. If this is a private cookbook, remove this section.
 
 e.g.
 1. Fork the repository on Github
