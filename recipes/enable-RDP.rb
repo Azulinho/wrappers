@@ -1,4 +1,5 @@
 include_recipe 'windows'
+include_recipe 'powershell'
 
 
 %w(RDS-RD-Server)
