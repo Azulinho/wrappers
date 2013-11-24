@@ -2,7 +2,7 @@ include_recipe 'windows'
 include_recipe 'powershell'
 
 
-%w(MSRDC-Infrastructure)
+%w(Remote-Desktop-Services)
    .each do |f|
       windows_feature f do
         action :install
