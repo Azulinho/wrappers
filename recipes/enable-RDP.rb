@@ -16,9 +16,3 @@ powershell "Hack the registry" do
   action :run
 end
 
-powershell "Open FW rule" do
-  code <<-EOH
-    Set-NetFirewallRule -DisplayGroup 'Remote Desktop' -Enabled True
-  EOH
-  action :run
-end
