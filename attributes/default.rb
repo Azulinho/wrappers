@@ -16,16 +16,7 @@ default['mysql']['url'] = \
 default['mysql']['basedir'] = \
   "#{ENV['SYSTEMDRIVE']}\\Program Files (x86)\\MySQL\\"
 
-  default['mysql']['installer_cli'] = %Q[
-    c:\\Program\ Files\ (x86)\\mySql\\MySQL\ Installer\\MySQLInstallerConsole.exe
-    --config=mysql-server-5.6-winx64:passwd=root
-    --product=mysql-server-5.6-winx64
-    --catalog=mysql-5.6-winx64
-    --action=install
-    --type=full
-    --nowait ]
-
-
+  default['mysql']['installer_cli'] = "c:\\Program\ Files\ (x86)\\mySql\\MySQL\ Installer\\MySQLInstallerConsole.exe --config=mysql-server-5.6-winx64:passwd=root --product=mysql-server-5.6-winx64 --catalog=mysql-5.6-winx64 --action=install --type=full --nowait"
 
 # wrapper::install-umbraco
 
